@@ -28,7 +28,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
+     client.connect();
     // Send a ping to confirm a successful connection
     const addRecordCollection = client
       .db("doctor-raju")
@@ -37,7 +37,6 @@ async function run() {
     app.post("/add-record", async (req, res) => {
       const body = req.body;
       const addDb = await addRecordCollection.insertOne(body);
-      console.log("addDb ====>", addDb);
       res.send(addDb);
     });
     //
